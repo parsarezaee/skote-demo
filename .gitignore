@@ -10,6 +10,8 @@ postgres/
 /postgres/*
 postgres-data/
 /postgres-data/*
+redis_data/
+redis_data/*
 migrations/*
 **/migrations/**
 !**/migrations

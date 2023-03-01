@@ -113,8 +113,12 @@ WSGI_APPLICATION = 'skote.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'skote',
+        'USER': 'parsa',
+        'PASSWORD': 'parsa1234',
+        'HOST': 'db',
+        'PORT': '5432'
     }
 }
 
@@ -156,7 +160,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR / "static")]
 STATIC_ROOT = os.path.join(BASE_DIR,'assets')
 
 AUTHENTICATION_BACKENDS = [
@@ -207,5 +211,8 @@ ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 #Celery setting
-CELERY_BROKER_URL = "redis://localhost:6379/3"
-CELERY_RESULT_BACKEND = "redis://localhost:6379/3"
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+
